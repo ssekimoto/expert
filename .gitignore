@@ -1,0 +1,20 @@
+# Bundle dependencies
+/vendor/bundle
+
+# Ignore local .env files
+.env
+
+/log/*
+/tmp/*
+/node_modules
+/public/packs
+
+# Ignore database
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore compiled assets
+/public/assets
+
+# Ignore pid files
+/tmp/pids/*.pid

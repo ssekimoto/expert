@@ -1,0 +1,7 @@
+# 無視するファイル・フォルダ
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/node_modules
+/public/packs
