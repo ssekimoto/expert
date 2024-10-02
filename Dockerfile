@@ -19,12 +19,11 @@ RUN bundle install
 # アプリケーションのファイルをすべてコピー
 COPY . .
 
-# スクリプトを追加
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
+# Remove a potentially pre-existing server.pid for Rails.
+RUN rm -f /app/tmp/pids/server.pid
+
+# ポートを指定
+EXPOSE 3000
 
 # デフォルトのエントリポイントを設定
-ENTRYPOINT ["entrypoint.sh"]
-
-# ポートとサーバーの起動
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+ENTRYPOINT ["bash", "-c", "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p 3000"]
